@@ -18,5 +18,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Insta/', include('Insta.urls')),
+    path('', include('Insta.urls')),
+    path('', ListView.as_view(),name='home'),
+    path('post/<int:pk>/', PostDetail.as_view(),name='post_detail'),
 ]
