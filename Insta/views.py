@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, ListView, DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from Insta.models import Post
+from Insta.models import Post, InstaUser
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -37,3 +37,11 @@ class SignupView(CreateView):
     template_name = "signup.html"
     success_url = reverse_lazy ('login')
 
+class UserDetail(DetailView):
+    model = InstaUser
+    template_name = "user_profile.html"
+
+class EditProfile(UpdateView):
+    model = InstaUser
+    template_name = "edit_profile.html"
+    fields= ('username','profile_pic',)
