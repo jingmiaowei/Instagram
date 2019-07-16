@@ -1,21 +1,17 @@
-{% extends "nav.html" %}
+{% extends "base.html" %}
 
 {% block content %}
+
 <div>
-    <ul>
-     {% if request.user.is_authenticated %}
-        <li>
-            <a href="{% url 'logout' %}">Logout</a>
-        </li>
-    {% else %}
-        <li>
-              <a href="{% url 'login' %}">Login</a>
-        </li>
-        <li>
-             <a href="{% url 'signup' %}">Signup</a>
-        </li>
-    {% endif %}
-    </ul>
+    <a href="{% url 'make_post' %}">Make Post </a>
+</div>
+
+<div>
+    {% for post in object_list %}
+        <a href="{% url 'post' post.pk %}">
+            <img src="{{ post.image }}" width=200 height=200>
+        </a>
+        {% endfor %}
 </div>
 
 {% endblock content %}
