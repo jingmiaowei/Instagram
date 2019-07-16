@@ -7,12 +7,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from Insta.forms import CustomUserCreationForm
 
 # Create your views here.
-class HelloDjango(TemplateView):
-    template_name = 'home.html'
 
 class PostListView(LoginRequiredMixin,ListView):
     model = Post
-    template_name = "post.html"
+    template_name = "index.html"
     login_url = 'login'
 
 class PostDetailView(DetailView):
